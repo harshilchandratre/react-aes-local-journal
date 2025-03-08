@@ -11,8 +11,9 @@ const Task = ({ title, description, id, deleteTask }) => {
       <RiDeleteBin2Fill
         color="crimson"
         size={30}
-        style={{ cursor: "pointer" }}
-        onClick={() => deleteTask(id)}
+        style={{cursor : "pointer"}}
+        onClick={() => deleteTask(id)}  
+
 
       />
     </div>

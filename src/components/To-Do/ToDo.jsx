@@ -25,10 +25,17 @@ const ToDo = () => {
     e.preventDefault();
 
     if (!title || !description) {
-      alert("Empty strings not allowed!");
+      alert("Seriously? You did nothing 😆");
     } else {
       setTask([...tasks, { title, description }]);
+      setTitle("")
+      setDescription("")
     }
+  };
+
+  const disableButtonStyle = {
+    backgroundColor: !title || !description ? "lightblue" : "lightseagreen",
+    cursor: !title || !description ? "not-allowed" : "pointer",
   };
 
   useEffect(() => {
@@ -40,7 +47,7 @@ const ToDo = () => {
       <header>"Eat that frog!"</header>
       <div className="to-doArea">
         {/* input area */}
-        <form onSubmit={submitHandler}>
+        <form>
           <input
             type="text"
             placeholder="Title here..."
@@ -54,7 +61,13 @@ const ToDo = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
-          <button className="add-btn">Add Note</button>
+          <button
+            onClick={submitHandler}
+            className="add-btn"
+            style={disableButtonStyle}
+          >
+            Add Note
+          </button>
         </form>
         {/* task area */}
         <div className="taskArea">
